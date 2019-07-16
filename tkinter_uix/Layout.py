@@ -2,8 +2,8 @@ import tkinter
 
 
 class BoxLayout(tkinter.Frame):
-    def __init__(self, master, *args, **kwargs):
-        tkinter.Frame.__init__(self, master, *args, **kwargs)
+    def __init__(self, master, bg='#fafafa', *args, **kwargs):
+        tkinter.Frame.__init__(self, master, bg=bg, *args, **kwargs)
         self.show()
 
     def show(self):
@@ -14,8 +14,8 @@ class BoxLayout(tkinter.Frame):
 
 
 class AnchorLayout(tkinter.Frame):
-    def __init__(self, master, anchor=None, anchor_x='LEFT', anchor_y='TOP', *args, **kwargs):
-        tkinter.Frame.__init__(self, master, *args, **kwargs)
+    def __init__(self, master, bg='#fafafa', anchor=None, anchor_x='LEFT', anchor_y='TOP', *args, **kwargs):
+        tkinter.Frame.__init__(self, master, bg=bg, *args, **kwargs)
         self.anchor = anchor
         self.anchor_x = anchor_x
         self.anchor_y = anchor_y

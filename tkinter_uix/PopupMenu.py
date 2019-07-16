@@ -2,8 +2,8 @@ import tkinter
 
 
 class PopupMenu(tkinter.Menu):
-    def __init__(self, master, *args, **kwargs):
-        tkinter.Menu.__init__(self, master, tearoff=0, *args, **kwargs)
+    def __init__(self, master, bg='#fafafa', *args, **kwargs):
+        tkinter.Menu.__init__(self, master, bg=bg, tearoff=0, *args, **kwargs)
 
         self.sub_menus = dict()
 

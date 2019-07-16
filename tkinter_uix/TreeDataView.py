@@ -33,7 +33,12 @@ class TreeDataView(tk.Frame):
             mode = 'browse'  # Select single row
         else:
             mode = 'extended'  # Select multiple rows
-        self.tree = ttk.Treeview(container, columns=headers, show='headings', selectmode=mode)
+
+        style = ttk.Style()
+        style.configure('mystyle.Treeview', font=('Verdana', 12))
+        style.configure('mystyle.Treeview.Heading', font=('Verdana', 12))
+
+        self.tree = ttk.Treeview(container, columns=headers, show='headings', selectmode=mode, style='mystyle.Treeview')
         vsb = ttk.Scrollbar(container, orient='vertical', command=self.tree.yview)
         hsb = ttk.Scrollbar(container, orient='horizontal', command=self.tree.xview)
         self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)

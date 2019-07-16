@@ -2,8 +2,8 @@ import tkinter
 
 
 class Screen(tkinter.Frame):
-    def __init__(self, master, *args, **kwargs):
-        tkinter.Frame.__init__(self, master, *args, **kwargs)
+    def __init__(self, master, bg='#fafafa', *args, **kwargs):
+        tkinter.Frame.__init__(self, master, bg=bg, *args, **kwargs)
 
     def show(self):
         self.pack(fill=tkinter.BOTH, expand=tkinter.YES)
