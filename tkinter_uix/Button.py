@@ -1,12 +1,12 @@
 from tkinter import Label as BTN
 from tkinter import FLAT
+from typing import NoReturn
 
 
 class Button(BTN):
     def __init__(self, master, text='', command=None, color='default', disabled=False, *args, **kwargs):
         BTN.__init__(self, master, text=text, padx=14, pady=6, font=('Verdana', 12), relief=FLAT, *args, **kwargs)
 
-        self.text = text
         self.color = color
         self.disabled = disabled
 
@@ -83,6 +83,12 @@ class Button(BTN):
             self.configure(bg=self.on_click_color)
             if command:
                 command()
+
+    def get_text(self):
+        return self.cget('text')
+
+    def set_text(self, text=''):
+        self.config(text=text)
 
 
 if __name__ == '__main__':

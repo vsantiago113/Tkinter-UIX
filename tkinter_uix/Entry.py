@@ -4,7 +4,8 @@ from tkinter import YES, FLAT, END, X
 
 
 class Entry(_Frame):
-    def __init__(self, master, bg='#90caf9', show=None, width=30, on_return=None, fg='black', placeholder='', *args, **kwargs):
+    def __init__(self, master, bg='#90caf9', show=None, width=30, on_return=None, fg='black',
+                 placeholder='', *args, **kwargs):
         _Frame.__init__(self, master, bg=bg, *args, **kwargs)
 
         self.show = show
@@ -12,7 +13,7 @@ class Entry(_Frame):
         self.fg = fg
         self.placeholder = placeholder
 
-        self.entry_frame = _Frame(self, borderwidth=1, bg='#ced4da')
+        self.entry_frame = _Frame(self, borderwidth=2, bg='#cccccc')
         self.entry_frame.pack(fill=X, expand=YES)
 
         self.entry = _Entry(self.entry_frame, borderwidth=6, relief=FLAT, bg='white', fg=fg, font=('Verdana', 12),

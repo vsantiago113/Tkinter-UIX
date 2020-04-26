@@ -1,2 +1,2 @@
 # Tkinter-UIX
-This project give you custom widgets for Tkinter Python3. I will be adding documentation pretty soon.
+The Tkinter-UIX is a set of custom Tkinter widgets customize to look similar to the popular Web Framework Bootstrap. As a fan of Bootstrap I wanted to create something that looks familiar and also good looking for Python. There are also some new widgets not available out of the box with Tkinter that I created using existing Tkinter widgets. The widgets are created using a combination of Tkinter widgets and altering the behavior of the widgets.
