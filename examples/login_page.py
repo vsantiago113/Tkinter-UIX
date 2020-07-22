@@ -1,14 +1,11 @@
 import tkinter
 from tkinter import messagebox
-from tkinter_uix.Layout import AnchorLayout
+from tkinter_uix.Layout import AnchorLayout, BoxLayout
 from tkinter_uix.Screen import ScreenManager
 from tkinter_uix.Button import Button
 from tkinter_uix.Label import Label
 from tkinter_uix.Navbar import Navbar
 from tkinter_uix.Entry import Entry
-
-background_color = '#2E2E2E'
-foreground_color = '#fafafa'
 
 # App Global Username and Password
 username_key = str()
@@ -19,12 +16,11 @@ class MainWin:
     def __init__(self, parent, screen_manager):
         self.screen_manager = screen_manager
 
-        user_screen = self.screen_manager.add_screen(parent, 'user_screen', bg=background_color)
+        user_screen = self.screen_manager.add_screen(parent, 'user_screen')
         self.screen_manager.switch_screen('user_screen')
 
         # START Navigation Bar **
-        self.navbar = Navbar(user_screen, bg=background_color)
-        self.navbar.edit(bg=background_color, fg=foreground_color)
+        self.navbar = Navbar(user_screen)
 
         home_button = Button(self.navbar, text='Home', color='info', command=None)
         logout_button = Button(self.navbar, text='Logout', color='info',
@@ -33,6 +29,19 @@ class MainWin:
         self.navbar.add_widget(logout_button)
         self.navbar.add_widget(home_button)
         # END Navigation Bar **
+
+        def testme():
+            print(button.text)
+
+        def testme2(string):
+            button.text = string
+
+        boxlayout = BoxLayout(user_screen)
+        button = Button(boxlayout, text='Get this text', command=testme)
+        button.pack()
+
+        button2 = Button(boxlayout, text='Change me', command=lambda: testme2('Hello'))
+        button2.pack()
 
 
 def my_app():
@@ -44,7 +53,7 @@ def my_app():
         username_key = username.get()
         password_key = password.get()
 
-        if username.get() == 'admin' and password.get() == 'admin123':
+        if username.get() == 'admin' and password.get() == 'Admin123':
             password.delete(0, tkinter.END)
             MainWin(root, screen_manager)
         else:
@@ -66,7 +75,7 @@ def my_app():
     password = Entry(anchor, show='*', placeholder='Password...', on_return=login)
     password.pack(pady=(0, 10))
 
-    button = Button(anchor, text='Login', color='info', command=login)
+    button = Button(anchor, text='Login', command=login)
     button.pack()
 
     root.mainloop()
