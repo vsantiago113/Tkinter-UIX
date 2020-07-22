@@ -1,10 +1,14 @@
 from tkinter import Entry as _Entry
 from tkinter import Frame as _Frame
 from tkinter import YES, FLAT, END, X
+from tkinter_uix import Theme
+
+theme = Theme()
 
 
 class Entry(_Frame):
-    def __init__(self, master, bg='#90caf9', show=None, width=30, on_return=None, fg='black',
+    def __init__(self, master, bg=theme.entry_color['background'], show=None, width=30, on_return=None,
+                 fg=theme.entry_color['foreground'],
                  placeholder='', *args, **kwargs):
         _Frame.__init__(self, master, bg=bg, *args, **kwargs)
 
@@ -13,10 +17,11 @@ class Entry(_Frame):
         self.fg = fg
         self.placeholder = placeholder
 
-        self.entry_frame = _Frame(self, borderwidth=2, bg='#cccccc')
+        self.entry_frame = _Frame(self, borderwidth=2, bg=theme.entry_color['border'])
         self.entry_frame.pack(fill=X, expand=YES)
 
-        self.entry = _Entry(self.entry_frame, borderwidth=6, relief=FLAT, bg='white', fg=fg, font=('Verdana', 12),
+        self.entry = _Entry(self.entry_frame, borderwidth=6, relief=FLAT, bg=theme.entry_color['background'],
+                            fg=theme.entry_color['foreground'], font=('Verdana', 12),
                             show=show, width=width)
         self.entry.pack(fill=X, expand=YES)
         self.on_focus_out()
@@ -30,7 +35,7 @@ class Entry(_Frame):
 
     def on_focus_in(self, *args, **kwargs):
         text = self.entry.get()
-        self.configure(borderwidth=2, bg='#00b8d4')
+        self.configure(borderwidth=2, bg=theme.entry_color['outline'])
         if text and text == self.placeholder:
             self.entry.delete(0, END)
 
@@ -42,14 +47,14 @@ class Entry(_Frame):
         text = self.entry.get()
         if text:
             if text == self.placeholder:
-                self.entry.configure(fg='gray')
+                self.entry.configure(fg=theme.entry_color['placeholder'])
                 self.entry.configure(show='')
             else:
                 self.entry.configure(fg=self.fg)
                 self.entry.configure(show=self.show)
         else:
             self.entry.insert(0, self.placeholder)
-            self.entry.configure(fg='gray')
+            self.entry.configure(fg=theme.entry_color['placeholder'])
             self.entry.configure(show='')
 
         self.configure(borderwidth=0)

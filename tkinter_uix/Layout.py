@@ -1,8 +1,11 @@
 import tkinter
+from tkinter_uix import Theme
+
+theme = Theme()
 
 
 class BoxLayout(tkinter.Frame):
-    def __init__(self, master, bg='#fafafa', *args, **kwargs):
+    def __init__(self, master, bg=theme.app_color['background'], *args, **kwargs):
         tkinter.Frame.__init__(self, master, bg=bg, *args, **kwargs)
         self.show()
 
@@ -14,7 +17,8 @@ class BoxLayout(tkinter.Frame):
 
 
 class AnchorLayout(tkinter.Frame):
-    def __init__(self, master, bg='#fafafa', anchor=None, anchor_x='LEFT', anchor_y='TOP', *args, **kwargs):
+    def __init__(self, master, bg=theme.app_color['background'], anchor=None, anchor_x='LEFT', anchor_y='TOP',
+                 *args, **kwargs):
         tkinter.Frame.__init__(self, master, bg=bg, *args, **kwargs)
         self.anchor = anchor
         self.anchor_x = anchor_x

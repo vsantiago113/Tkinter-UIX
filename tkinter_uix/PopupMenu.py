@@ -1,8 +1,11 @@
 import tkinter
+from tkinter_uix import Theme
+
+theme = Theme()
 
 
 class PopupMenu(tkinter.Menu):
-    def __init__(self, master, bg='#fafafa', *args, **kwargs):
+    def __init__(self, master, bg=theme.app_color['background'], *args, **kwargs):
         tkinter.Menu.__init__(self, master, bg=bg, tearoff=0, *args, **kwargs)
 
         self.sub_menus = dict()

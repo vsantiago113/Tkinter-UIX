@@ -1,15 +1,19 @@
 import tkinter
 from PIL import Image, ImageTk
+from tkinter_uix import Theme
+
+theme = Theme()
 
 
 class Navbar(tkinter.Frame):
-    def __init__(self, master, bg='#fafafa', *args, **kwargs):
+    def __init__(self, master, bg=theme.navbar_color['background'], *args, **kwargs):
         tkinter.Frame.__init__(self, master, bg=bg, *args, **kwargs)
 
         default_image = Image.open('./tkinter_uix/images/python.png')
         self.image = ImageTk.PhotoImage(default_image)
         self.header_title = tkinter.Label(self, image=self.image, text='Title', compound=tkinter.LEFT,
-                                          font=('Verdana', 12))
+                                          font=('Verdana', 12), bg=theme.navbar_color['background'],
+                                          fg=theme.navbar_color['foreground'])
         self.header_title.pack(side=tkinter.LEFT)
 
         self.show()
